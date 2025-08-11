@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MCV</string>
+    <string name="first_run_title">انضم إلى قناتنا على التليجرام</string>
+    <string name="first_run_message">للتحديثات والدعم، تفضل بزيارة قناتنا على التليجرام.</string>
+    <string name="first_run_open">فتح التليجرام</string>
+    <string name="first_run_dont_show">لا تظهر مرة أخرى</string>
+    <string name="ok">حسناً</string>
+    <string name="cancel">إلغاء</string>
+    <string name="tab_configurations">الإعدادات</string>
+    <string name="tab_host_scanner">فحص المضيف</string>
+    <string name="tab_logs">السجلات</string>
+    <string name="tab_analytics">التحليلات</string>
+    <string name="tab_settings">الإعدادات</string>
+    <string name="tab_about">حول</string>
+</resources>
