@@ -1,0 +1,280 @@
+{
+  "task_id": "MCV-FullBuild-2025-08-11",
+  "project": {
+    "name": "MCV",
+    "internal_name": "Mr.Classic VPN",
+    "package": "com.mrclassic.mcv",
+    "description": "A professional, multi-protocol Android VPN/proxy app supporting V2Ray (vmess/vless/trojan/shadowsocks), SSH tunneling, DNS tunneling, HTTP-payloads, hybrid/multipath chains, advanced config management, host/IP tests, AI intrusion skeleton, and extensive UI/UX features. Dark theme, Arabic+English, first-run Telegram prompt to https://t.me/iq_Holy_Space, About mentioning Mr.Classic and completion date 10-8-2025.",
+    "developer_credit": {
+      "author": "Mr.Classic",
+      "bio": "Computer Engineering student from Iraq",
+      "completion_date": "2025-08-10"
+    },
+    "deliverables": [
+      "Full Android Studio project (Kotlin)",
+      "Well-documented source code with comments",
+      "Gradle build files and CI pipeline",
+      "GitHub Actions workflow producing APK artifact and release",
+      "README with build/deploy instructions",
+      "Example configs in assets",
+      "Unit/integration test skeletons",
+      "Optional signed release instructions using GitHub secrets"
+    ]
+  },
+  "features": {
+    "protocol_support": [
+      "V2Ray: vmess, vless, trojan, shadowsocks, socks",
+      "SSH tunneling (dynamic port forwarding)",
+      "DNS tunneling (DoH/DoT support)",
+      "HTTP Injector style custom payloads",
+      "Advanced payload generator/editor",
+      "Custom multi-layer obfuscation/transport"
+    ],
+    "config_management": {
+      "unlimited_configs": true,
+      "import_sources": ["clipboard", "QR/barcode", "manual input", "file import", "Telegram Bot push"],
+      "export_modes": ["plain", "app_encrypted"],
+      "export_formats": ["http-custom-style", "v2ray-json", "ssh-uri", "generic-text"],
+      "editing": {
+        "smart_editor": true,
+        "syntax_highlight": false,
+        "validation": true,
+        "templates": true
+      },
+      "cloud_sync": {
+        "google_drive": true,
+        "telegram_bot_backup": true,
+        "sync_conflict_resolution": "last-write-wins (configurable)"
+      }
+    },
+    "host_ip_inspector": {
+      "scan": true,
+      "tcp_ping": true,
+      "http_probe": true,
+      "dns_query": true,
+      "geoip_lookup": true,
+      "blacklist_whitelist": true,
+      "protocol_validation": ["ssh", "vmess", "vless", "http"],
+      "reporting": true
+    },
+    "advanced_vpn": {
+      "hybrid_connections": true,
+      "failover_load_balance": true,
+      "multipath_support": true,
+      "dual_vpn_sessions": true,
+      "vpn_chaining": true,
+      "dynamic_session_encryption": true,
+      "stealth_mode": true,
+      "kill_switch": true
+    },
+    "ui_ux": {
+      "theme": "dark_default",
+      "themes_supported": ["dark_default", "midnight_blue", "graphite"],
+      "sections": ["Configurations", "Host Scanner", "Logs", "Analytics", "Settings", "About"],
+      "first_run_prompt": {
+        "telegram_channel": "https://t.me/iq_Holy_Space",
+        "show_on_first_run": true,
+        "dont_show_again_option": true
+      },
+      "widgets": true,
+      "voice_shortcuts": true,
+      "responsive_design": true,
+      "languages": ["en", "ar"]
+    },
+    "security_privacy": {
+      "config_encryption": "AES-256-GCM with Android Keystore for key management",
+      "biometric_unlock": true,
+      "dns_privacy": ["DoH", "DoT"],
+      "dynamic_key_rotation": true,
+      "secure_storage": "Android Keystore",
+      "logging_policy": "user_opt_in, PII redaction"
+    },
+    "performance": {
+      "auto_reconnect": true,
+      "keep_alive": true,
+      "scheduler": true,
+      "traffic_compression": true,
+      "multi_threaded_io": true,
+      "battery_optimizations": true
+    },
+    "analytics_reporting": {
+      "real_time_graphs": true,
+      "session_statistics": true,
+      "ai_recommendations": "skeleton (requires optional cloud ML or on-device model)",
+      "alerts": true
+    },
+    "extensibility": {
+      "api": {
+        "local_http_api": true,
+        "auth_token_support": true,
+        "endpoints": ["start", "stop", "status", "list_configs", "add_config"]
+      },
+      "telegram_bot_integration": true,
+      "remote_management": {
+        "web_companion": true,
+        "auth_method": "token + optional 2FA"
+      },
+      "plugin_system": {
+        "plugin_loader": "dynamic (pre-approved JARs or scripts)",
+        "plugin_sdk": "documented interfaces"
+      }
+    },
+    "compatibility": {
+      "min_sdk": 26,
+      "target_sdk": 34,
+      "androids_supported": "Android 8.0+",
+      "network_support": ["4G", "LTE", "5G", "WiFi6"],
+      "enterprise_compat": true
+    }
+  },
+  "architecture": {
+    "language": "Kotlin (primary)",
+    "native_components": {
+      "v2ray_core": {
+        "strategy": [
+          "preferred: include prebuilt native binaries for each ABI (armv7, arm64, x86, x86_64) in app/src/main/jniLibs or assets and copy to filesDir at runtime",
+          "fallback: build v2ray-core in CI for each ABI if prebuilt not supplied (requires NDK + glibc toolchain steps)"
+        ],
+        "runtime_process": "spawned Process from bundled binary or use JNI wrapper if compiled as native library",
+        "note": "Cursor must either fetch prebuilt binaries from a trusted URL or compile them in CI. See CI section."
+      },
+      "ssh_impl": "JSch (Java) included as library; optional native tunnels if higher perf required"
+    },
+    "modules": [
+      "app:ui",
+      "app:core (VpnService, process managers, config engine)",
+      "app:security (KeyStoreHelper, crypto wrappers)",
+      "app:inspection (Host/IP tools)",
+      "plugins (optional runtime plugin loader)"
+    ],
+    "data_store": "Room DB for logs & metadata + encrypted file storage for configs"
+  },
+  "repo_structure": {
+    "root": [
+      "app/",
+      "README.md",
+      ".github/workflows/android-ci.yml",
+      "assets/example_configs.json",
+      "docs/",
+      "LICENSE"
+    ],
+    "app": [
+      "src/main/java/com/mrclassic/mcv/...",
+      "src/main/res/...",
+      "src/main/jniLibs/(optional binaries)",
+      "build.gradle",
+      "proguard-rules.pro"
+    ]
+  },
+  "ci_cd": {
+    "provider": "GitHub Actions",
+    "workflow_name": "android-ci.yml",
+    "triggers": ["push", "pull_request", "workflow_dispatch"],
+    "matrix_build": {
+      "abis": ["armeabi-v7a", "arm64-v8a", "x86", "x86_64"],
+      "jdk": "temurin-17"
+    },
+    "workflow_steps": [
+      "checkout",
+      "setup-java JDK 17",
+      "setup-ndk (if build v2ray cores)",
+      "restore gradle cache",
+      "prepare v2ray binaries: (1) if env.V2RAY_PREBUILT_URL provided -> download & place into app/src/main/jniLibs/ABI or filesDir, (2) else attempt to build v2ray-core from source (optional & heavier)",
+      "gradle assembleRelease (or assembleDebug if prefer)",
+      "run unit tests",
+      "sign APK: if secrets provided (KEYSTORE_BASE64, KEYSTORE_PASS, KEY_ALIAS, KEY_PASS) -> create keystore file, sign with apksigner -> produce signed APK",
+      "upload artifacts",
+      "create GitHub Release (on tag push) and attach APK"
+    ],
+    "example_workflow_yaml": "replace_placeholder_with_actual_yaml"
+  },
+  "ci_details": {
+    "signing_secrets": [
+      "KEYSTORE_BASE64 (base64 encoded keystore .jks or .keystore)",
+      "KEYSTORE_PASSWORD",
+      "KEY_ALIAS",
+      "KEY_PASSWORD"
+    ],
+    "v2ray_binaries_handling": {
+      "preferred": {
+        "env_var": "V2RAY_PREBUILT_URL",
+        "behavior": "Download zip containing jniLibs/<ABI>/v2ray and copy to app/src/main/jniLibs/<ABI>/ or to filesDir at runtime"
+      },
+      "fallback_build": {
+        "note": "Build v2ray-core for each ABI in CI. Requires adding build steps to clone v2ray-core repo and run cross-compile toolchain (complex: heavy NDK usage). Default CI will try download first."
+      }
+    },
+    "artifact_upload": {
+      "path_debug_apk": "app/build/outputs/apk/debug/*.apk",
+      "path_release_apk": "app/build/outputs/apk/release/*.apk",
+      "create_release_on_tag": true
+    }
+  },
+  "github_workflow_template": {
+    "name": "Android CI - build apk and release",
+    "content": "name: Android CI\\n\\non:\\n  push:\\n    branches: [ main ]\\n  pull_request:\\n    branches: [ main ]\\n  workflow_dispatch:\\n\\njobs:\\n  build:\\n    runs-on: ubuntu-latest\\n    strategy:\\n      matrix:\\n        abi: [armeabi-v7a, arm64-v8a, x86, x86_64]\\n    steps:\\n      - uses: actions/checkout@v4\\n      - name: Set up JDK 17\\n        uses: actions/setup-java@v4\\n        with:\\n          distribution: 'temurin'\\n          java-version: '17'\\n      - name: Cache Gradle\\n        uses: actions/cache@v4\\n        with:\\n          path: |\n            ~/.gradle/caches\n            ~/.gradle/wrapper\n          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}\\n      - name: Prepare v2ray binaries (download if provided)\\n        if: env.V2RAY_PREBUILT_URL != ''\\n        run: |\n          echo \"Downloading v2ray prebuilt archive...\"\n          curl -L \"$V2RAY_PREBUILT_URL\" -o v2ray_prebuilt.zip\n          unzip -q v2ray_prebuilt.zip -d v2ray_prebuilt\n          # place binaries into app/src/main/jniLibs/<ABI>/ or copy to filesDir at runtime in build step\n          cp -r v2ray_prebuilt/jniLibs/* app/src/main/jniLibs/ || true\n      - name: Build Debug APK\\n        run: ./gradlew assembleDebug --no-daemon --stacktrace\\n      - name: Run unit tests\\n        run: ./gradlew test --no-daemon\\n      - name: Sign APK (optional)\\n        if: secrets.KEYSTORE_BASE64 != ''\\n        run: |\n          echo \"$KEYSTORE_BASE64\" | base64 --decode > release.keystore\n          echo 'Signing release APK if exists...'\n          if [ -f app/build/outputs/apk/release/app-release-unsigned.apk ]; then\n            jarsigner -keystore release.keystore -storepass \"$KEYSTORE_PASSWORD\" -keypass \"$KEY_PASSWORD\" app/build/outputs/apk/release/app-release-unsigned.apk \"$KEY_ALIAS\"\n            zipalign -v -p 4 app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/app-release-signed.apk\n          fi\\n      - name: Upload artifact\\n        uses: actions/upload-artifact@v4\\n        with:\\n          name: mcv-apk\\n          path: |\n            app/build/outputs/apk/debug/*.apk\n            app/build/outputs/apk/release/*.apk\\n      - name: Create GitHub Release and attach APK\\n        uses: softprops/action-gh-release@v1\\n        with:\\n          tag_name: ${{ github.sha }}\\n        env:\\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n      - name: Upload release asset\\n        uses: softprops/action-gh-release@v1\\n        with:\\n          files: app/build/outputs/apk/release/*.apk"
+  },
+  "qa_acceptance_criteria": {
+    "functional": [
+      "App builds successfully (assembleDebug) on CI",
+      "Config import (paste/QR/manual) works and adds to local store",
+      "Keystore-based encryption/decryption of configs functions",
+      "VPN service skeleton starts/stops and foreground notification appears",
+      "SSH tunnel manager can establish basic JSch connection when valid credentials provided"
+    ],
+    "security": [
+      "No hard-coded symmetric keys in repo",
+      "Keystore used for config encryption",
+      "Sensitive logs redacted by default"
+    ],
+    "ui": [
+      "Dark theme loads and first-run Telegram prompt appears with Do not show again option",
+      "Configs list editable and persistent"
+    ]
+  },
+  "assumptions_and_constraints": {
+    "assumptions": [
+      "Cursor has permissions to create files, commit to repo and push to GitHub provided credentials",
+      "If release signing required, user will add keystore secrets to GitHub repo settings",
+      "Prebuilt v2ray binaries are available or CI will be configured to build them (heavy/optional)"
+    ],
+    "constraints": [
+      "Building v2ray-core in CI is complex and may significantly increase CI time",
+      "App distribution policies (Google Play) require adherence to store rules; user responsibility to comply",
+      "This JSON instructs an automated builder; environment-specific adjustments may be necessary"
+    ]
+  },
+  "execution_instructions_for_cursor": {
+    "no_questions": true,
+    "defaults": {
+      "build_type": "release",
+      "sign_release_if_secrets": true,
+      "include_v2ray_prebuilt": true,
+      "create_github_release_on_tag": true
+    },
+    "steps": [
+      "Create repository root with structure specified in repo_structure",
+      "Populate app with the Kotlin modules, VpnService and UI as in prior skeleton",
+      "Add native binaries: if V2RAY_PREBUILT_URL env var provided -> download and place into app/src/main/jniLibs/<ABI>/ ; else leave placeholder and set README to instruct manual upload",
+      "Add example configs to assets/example_configs.json",
+      "Add KeyStoreHelper and integrate ConfigManager to use it",
+      "Add SshTunnelManager (JSch) and V2RayProcessManager skeleton that spawns bundled binary",
+      "Add host/ip scanner module using non-privileged TCP/HTTP probes and GeoIP via local DB or online API (make online API optional and configurable in settings)",
+      "Implement AI intrusion detection skeleton: offline rule-engine + optional on-device lightweight model (user can disable cloud calls by default)",
+      "Add unit tests skeleton and GitHub Actions workflow from github_workflow_template.content",
+      "If secrets for signing are present in repo settings, CI will produce signed release apk and attach to release",
+      "Push all to GitHub and trigger CI (workflow_dispatch) to build",
+      "On success: CI uploads APK artifacts and creates a GitHub Release if tag pushed"
+    ],
+    "outputs_expected": [
+      "Signed APK (if secrets set) or debug APK artifact",
+      "CI logs and unit test reports",
+      "GitHub Release with APK attached (if configured)"
+    ]
+  },
+  "notes_for_developer_and_maintainer": {
+    "v2ray_binaries_source_recommendation": "Provide prebuilt official v2ray-core binaries for each target ABI, or use a trusted mirror. If building from source, allocate CI minutes and NDK toolchain.",
+    "privacy_policy_and_terms": "Include clear privacy policy and terms for end-users (data collection, telemetry, logs).",
+    "legal_warning": "User must ensure compliance with local laws and distribution policies regarding VPN/proxy apps. The author and builder are responsible for usage and distribution."
+  }
+}
