@@ -1,0 +1,8 @@
+<resources>
+    <color name="mdc_black">#000000</color>
+    <color name="mdc_white">#FFFFFF</color>
+    <color name="colorPrimary">#121212</color>
+    <color name="colorPrimaryVariant">#1E1E1E</color>
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+</resources>

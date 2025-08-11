@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MCV</string>
+    <string name="first_run_title">Join our Telegram</string>
+    <string name="first_run_message">For updates and support, visit our Telegram channel.</string>
+    <string name="first_run_open">Open Telegram</string>
+    <string name="first_run_dont_show">Don't show again</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="tab_configurations">Configurations</string>
+    <string name="tab_host_scanner">Host Scanner</string>
+    <string name="tab_logs">Logs</string>
+    <string name="tab_analytics">Analytics</string>
+    <string name="tab_settings">Settings</string>
+    <string name="tab_about">About</string>
+</resources>
